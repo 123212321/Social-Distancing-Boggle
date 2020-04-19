@@ -69,7 +69,7 @@ var range = SpreadsheetApp.getActiveSpreadsheet().getRange("D6");
   SpreadsheetApp.flush();
   //first count down minutes
   currentTime=maxtime;
-  Doc=DocumentApp.create("WordList");
+ 
   while (currentTime>1) {
     Utilities.sleep(60000);  // 1 min delay 
     currentTime=currentTime-1;
