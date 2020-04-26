@@ -26,8 +26,8 @@ The first step is to share the Boggle Game Board with all the players.  Everyone
 2.  On a mobile device (Android or Apple), the easiest way is to download the Google Sheet app.  I have not been able to get the buttons to work on a mobile device. 
 3.  On a mobile device without the Google Sheet app, the game will still work.  However, if it is loaded into the browser, the player will have to refresh the browser window in order to see the board change.
 
-At least one player needs to be on a computer, logged into a Google account and given permission to edit the spreadsheet to press the buttons.  Not all Google accounts will allow users to edit this type of file (for instance, my kids' accounts at school).
+At least one player needs to be on a computer, logged into a Google account and given permission to edit the spreadsheet to press the buttons.  Not all Google accounts will allow users to edit this type of file (for instance, my kids' accounts at school).  
 
-Now we can play traditional Boggle together while keeping a safe social distance during
-COVID-19 Pandemic.
+Before running the code, the user must give permission for an unauthorized program to run.  Navigating through three warning screens is required to give permission for the program to run.  On the first one, choose 'advanced' instead of 'Back to Safety'.  I will see if I can figure out how to get the program verified.
+
 
