@@ -20,13 +20,21 @@ function initializeDice() {
  var dice12="TACIAO";
  var dice13="SACERL";
  var diceall=[dice1, dice2, dice3,dice4,dice5,dice6,dice7,dice8,dice9,dice10,dice11,dice12,dice13,dice14,dice15,dice16]; 
- 
+//erase word list from previous game
+  var spreadsheet=SpreadsheetApp.getActiveSpreadsheet();
+  spreadsheet.getRange('F:F').activate();
+  spreadsheet.getActiveRangeList().clear({contentsOnly: true, skipFilteredRows: true});
+  
+ //randomly choose which side of each dice will appear 
 for (i = 0; i < 16; i++) { 
 
   aside=Math.floor(Math.random()*6);
 
+ //   range = spreadsheet.getRange("C"+(i+1));
+
   bloc[i]=diceall[i].charAt(Math.floor(Math.random()*6));
   if (bloc[i]=="Q") {bloc[i]="Qu"}
+//  range.setValue(bloc[i]);
 }
 
   // now shuffle the loc array to represent shuffling the dice
@@ -50,17 +58,30 @@ while (0 != currentIndex) {
       if (j==1) {(cellloc="B"+(i+1)) }
       if (j==2) {(cellloc="C"+(i+1)) }
       if (j==3) {(cellloc="D"+(i+1)) }
-  range = SpreadsheetApp.getActiveSpreadsheet().getRange(cellloc);
+  range = spreadsheet.getRange(cellloc);
   range.setValue(bloc[i*4+j]);}
+//      range.setValue(cellloc+bloc[i*4+j]);}
   }
   
-  range = SpreadsheetApp.getActiveSpreadsheet().getRange("D6");
+  range = spreadsheet.getRange("D6");
   range.setBackground("");
   range.setValue("");
  }
 
-function boggleTimer() {
+  
+//  var ss = SpreadsheetApp.getActiveSpreadsheet();
+//  var sheet = ss.getSheets()[0];
 
+
+function boggleTimer() {
+//    var spreadsheet = SpreadsheetApp.getActive();
+// spreadsheet.getRange('D6').activate();
+//  spreadsheet.getCurrentCell().setRichTextValue(SpreadsheetApp.newRichTextValue()
+//  .setText('Time\'s Up')
+//  .setTextStyle(0, 9, SpreadsheetApp.newTextStyle()
+//  .setFontSize(18)
+//  .setBold(true))
+//  .build());
 var maxtime=3; //maximum minutes  must be >=1 in 1/2 minute intervals
   var currentTime;
 var range = SpreadsheetApp.getActiveSpreadsheet().getRange("D6");
@@ -69,7 +90,6 @@ var range = SpreadsheetApp.getActiveSpreadsheet().getRange("D6");
   SpreadsheetApp.flush();
   //first count down minutes
   currentTime=maxtime;
- 
   while (currentTime>1) {
     Utilities.sleep(60000);  // 1 min delay 
     currentTime=currentTime-1;
@@ -95,7 +115,6 @@ var range = SpreadsheetApp.getActiveSpreadsheet().getRange("D6");
   .setFontSize(16);
 SpreadsheetApp.flush();
 }
-
  
 function checkWord() {
     var range = SpreadsheetApp.getActiveSpreadsheet().getRange("B8");
