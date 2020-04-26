@@ -1,6 +1,8 @@
 # Social-Distancing-Boggle
 A Boggle Game Board that can be used while videoconferencing.  This program is meant to display a Boggle Game Board to each player on a computer or whatever device the player desires.  It is not intended to automate the social part of playing the game, only to enable players in different locations to play together.
 
+Now we can play Boggle even while social distancing.
+
 Basic Directions:
 
 This is meant to be a bound code to Google Sheets. First you need to create the Boggle board in Google Sheets.  Then copy the Boggle Game javascript code into the spreadsheet script window.  Finally connect the buttons on the spreadsheet to the appropriate functions in the script.  To play, share the link for the Google Sheet with all the players.  Only players on a computer logged into a google account can roll the dice and set the timer, but all players can see the gameboard
@@ -31,3 +33,12 @@ At least one player needs to be on a computer, logged into a Google account and 
 Before running the code, the user must give permission for an unauthorized program to run.  Navigating through three warning screens is required to give permission for the program to run.  On the first one, choose 'advanced' instead of 'Back to Safety'.  I will see if I can figure out how to get the program verified.
 
 
+Display each player's word list (optional):
+Sometimes we have trouble hearing other players read his/her word list.  So, I created a Google Form to allow players to create a digital word list.  Players do not press the submit button when time is up, they press the submit button when it is time to share his/her words.  Here are directions to create a form to type in a Boggle word list:
+1.  Create a Form with two fields: a Name field which takes a short answer and a Word List field which accepts a long answer.
+2.  Click on the menu in the upper right corner of the screen, go to the script editor.  Then replace the default code with wordlist.js.  Change the name of the code and save it.  
+3.  Finally, go into the settings (icon to the left of the Send button) and at the bottom of the General Tab, put a check in the box labeled 'Edit aftersSubmit'
+
+Perhaps the players can put x marks next to their words when someone else has the same word.
+
+Keyboards are available that can allow users to write words instead of typing them, such as Google Handwriting.  However, the each player would have to install it on their own and be able to switch between a standard keyboard and a handwriting keyboard on their own.
