@@ -36,7 +36,7 @@ Before running the code, the user must give permission for an unauthorized progr
 Display each player's word list (optional):
 Sometimes we have trouble hearing other players read his/her word list.  So, I created a Google Form to allow players to create a digital word list.  Players do not press the submit button when time is up, they press the submit button when it is time to share his/her words.  Here are directions to create a form to type in a Boggle word list:
 1.  Create a Form with two fields: a Name field which takes a short answer and a Word List field which accepts a long answer.
-2.  Click on the menu in the upper right corner of the screen, go to the script editor.  Then replace the default code with wordlist.js.  Change the name of the code and save it.  
+2.  Click on the menu in the upper right corner of the screen, go to the script editor.  Then replace the default code with shareWordList.js.  Change the name of the code and save it.  
 3.  Finally, go into the settings (icon to the left of the Send button) and at the bottom of the General Tab, put a check in the box labeled 'Edit aftersSubmit'
 
 Perhaps the players can put x marks next to their words when someone else has the same word.
