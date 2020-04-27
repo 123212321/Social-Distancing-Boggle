@@ -15,7 +15,9 @@ Then, insert a dawing into cells B5:B6 and create a text box with the words "Sta
 
 In cell A8, I typed "Word to check:", and cell C8 insert a drawing with a text box with the word "check".  This button will be used to look up the definition of the word you type into cell B8.  A window will pop up with the word you put in B8 with a link to a dictionary definition of it.  When you click on the word, the definition will appear in a new tab.
 
-Mext, click on Tools menu and choose "Script Editor".  In the script editor, replace the default with Boogle Code.js and save it.  You should probably change the "Untitled" to something like Boggle Code. Then save the script and return to the spreadsheet tab.
+Mext, click on Tools menu and choose "Script Editor".  In the script editor, replace the default with Boogle Code.js and save it.  You should probably change the "Untitled" to something like Boggle Code. Then save the script. 
+
+Finally, on the menu in the script editor, choose '"Publlsh" and "Deploy as web app".  Make sure to choose to Execute the app as you and click OK.  Now  people that you share this game with should not get the warning that this script is not safe. Now return to the spreadsheet tab.
 
 Now, we need to make the three drawings into buttons.  If you right click on the text box that says "Roll Dice", you will see three dots appear in the upper right hand corner of the drawing.  Click on the dots to get a menu and choose "assign script". Type "initializeDice" in the box that appears and press "OK".  The "Start Timer" text box should be assigned the script "boggleTimer" and the "check" text box should be assigned the script "checkWord".  Now these three text boxes will work as buttons. 
 
@@ -30,14 +32,14 @@ The first step is to share the Boggle Game Board with all the players.  Everyone
 
 At least one player needs to be on a computer, logged into a Google account and given permission to edit the spreadsheet to press the buttons.  Not all Google accounts will allow users to edit this type of file (for instance, my kids' accounts at school).  
 
-Before running the code, the user must give permission for an unauthorized program to run.  Navigating through three warning screens is required to give permission for the program to run.  On the first one, choose 'advanced' instead of 'Back to Safety'.  I will see if I can figure out how to get the program verified.
-
-
 Display each player's word list (optional):
+
 Sometimes we have trouble hearing other players read his/her word list.  So, I created a Google Form to allow players to create a digital word list.  Players do not press the submit button when time is up, they press the submit button when it is time to share his/her words.  Here are directions to create a form to type in a Boggle word list:
 1.  Create a Form with two fields: a Name field which takes a short answer and a Word List field which accepts a long answer.
-2.  Click on the menu in the upper right corner of the screen, go to the script editor.  Then replace the default code with shareWordList.js.  Change the name of the code and save it.  
-3.  Finally, go into the settings (icon to the left of the Send button) and at the bottom of the General Tab, put a check in the box labeled 'Edit aftersSubmit'
+2.  Click on the menu in the upper right corner of the screen, go to the script editor.  Then replace the default code with shareWordList.js.  Change the name of the code and save it. 
+4.  Change the URL of the Google spreadsheet with the Boggle Game in line ??.
+5.  Next, follow the steps from the spreadsheet to publish this script.
+6.  Finally, return to the Form editor, go into the settings (icon to the left of the Send button) and at the bottom of the General Tab, put a check in the box labeled 'Edit aftersSubmit'
 
 Perhaps the players can put x marks next to their words when someone else has the same word.
 
