@@ -3,6 +3,8 @@ A Boggle Game Board that can be used while videoconferencing.  This program is m
 
 Now we can play Boggle even while social distancing.
 
+I created this game mostly in Google Sheets amd wrote Javascript routines to mix up the dice and time the game.  This repository contains the javascript, and here I explain how to recreate the Game Board using Google Sheets.  I do not know how to share the the soreadsheet here.  Using Google Sheets is the key to this game because if you share the URL of the spreadsheet, everyone will see the same game.
+
 Basic Directions:
 
 This script is meant to be a bound code to Google Sheets. First you need to create the Boggle board in Google Sheets.  Then copy the
