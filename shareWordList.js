@@ -1,8 +1,14 @@
+
 function onSubmit(e)  {
   
-  var ss = SpreadsheetApp.openById("17XzrbgarItm0WFD3JRJ4FnNJa57xv65aBpvUsbg-QOs");
+  var ss = SpreadsheetApp.openByUrl
+  ("https://docs.google.com/spreadsheets/d/17XzrbgarItm0WFD3JRJ4FnNJa57xv65aBpvUsbg-QOs/edit?usp=sharing");
   SpreadsheetApp.setActiveSpreadsheet(ss);
   var firstSheet = ss.getSheets()[0];
+// delete column F to erase any previous word lists    
+  firstSheet.getRange('F:F').activate();
+  firstSheet.getActiveRangeList().clear({contentsOnly: true, skipFilteredRows: true});
+  
   var form=FormApp.getActiveForm();
   var lastResponse=form.getResponses().slice(-1)[0];
    var response = getUserResponse(lastResponse);
