@@ -3,6 +3,33 @@ A Boggle Game Board that can be used while videoconferencing.  This program is m
 
 Now we can play Boggle even while social distancing.
 
+This project is the most complicated web program I have written, so I have learned how to significantly improve my first attempt which was a google sheet and difficult to use if you are not logged into a Google account.
+
+I now have figured out how to make this Boggle Game into a web page.  It still has to depend on a google sheet because I need a central place to store the Boggle board that is accessible by all the players.  This code was written using Google Apps Script and includes two files: index.html and Code.gs, both part of a single Google Apps Script project.  Code.gs runs on the server and communicates between the browser and the Google sheet (which is on the Google server). and index.html runs in the user's browser.  This version is much easier for the user, does not require a Gppgle account for the user and is much easier to set up.
+
+Here are the steps to using the program:
+1.  Open a new Google Apps Script project
+2.  Paste the Code.gs file in this repository into the project
+3.  Open a new HTML file and past the code in index.html in this repository into the file
+3.  Create a bew Google Sheet.  Any empty Google Sheet is fine.  You just need a central place to store the game board that all players can access.
+4.  Paste the id from the Google Sheet into the Code.gs in two places
+Here is how to find the id of your Google Sheet if you do not know:
+https://developers.google.com/sheets/api/guides/concepts
+5.  If you want to use feature to look up words in the dictionary, you need a key for the Mirriam-Webster Dictionary API.
+You would need to register for an account, but it is free.  Put the key in index.html where indicated.
+6.  Publish the file as a web app and share with everyone who wants to play.  When publishing it, specify that you want to run the
+app as yourself and then specify who can run it.  I chose "Anyone, even Anonymous" because some people I play with do not have Google accounts or may not be signed in.
+
+Things I learned from this project:
+1.  How Google Apps Script works.  gs files run on the server and can communicate with other Google Apps. html files run in the user's browser and can use DOM methods because these methods are only available in the local browser.
+2.  My first attempt at using an API.  I use a very basic, simple call to a dictionary API.
+3.  Using CSS to format my webpage.
+
+If I want to work on this project some more, I can add a program that compares player's word lists.  However, I don't want to take away the part of the game that involves discussing word list.  
+
+Previous Boggle version:
+The following explains BoggleCode.js and shareWordList.js
+
 I created this game mostly in Google Sheets amd wrote Javascript routines to mix up the dice and time the game.  This repository contains the javascript, and here I explain how to recreate the Game Board using Google Sheets.  I do not know how to share the the soreadsheet here.  Using Google Sheets is the key to this game because if you share the URL of the spreadsheet, everyone will see the same game.
 
 Basic Directions:
