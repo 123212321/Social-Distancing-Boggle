@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Social Distancing Boggle</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* copied this layout from
+https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_website2
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+}
+.column {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+
+.dicesmall {
+    width: 48px;
+    float: left;
+    background-color: orange;
+    border: 1px solid black;
+    font-size: 28px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+/* Header/logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+/*  background: #1abc9c;*/
+  background: #FFFFCC;
+}
+
+button {
+  background:#FFFFCC;
+  font-size:16px
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 50%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  max-width: 260px;
+}
+
+/* Main column */
+.main {
+  flex: 50%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the
+two columns stack on top of each other instead of next to each other 
+@media screen and (max-width: 300px) {
+  .row {   
+    flex-direction: column;
+  }
+} */
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Social Distancing Boggle</h1>
+<p id="demo" style="font-size:20px; text-align: left">
+         Game instructions:</p>
+<ol style="font-size:18px; text-align: left">
+<li> Game leader presses Roll Dice button.<br>  (Only that player will see "Ready!
+ on his/her screen).
+<li> All players press the "Start Timer" button.  The game board and
+timer will then appear for each person.
+<li> Players can write down words either on paper or type them into
+the box to the right.
+<li> You can type a word in the box below the Start Timer button to see if it is in the
+Merrian-Webster School Dictionary (for ages 14+).
+</ol>
+</div>
+
+<div class="row">
+  <div class="side">
+	<div class="column">
+		<div id="d11" class="dicesmall">0</div>
+		<div id="d12" class="dicesmall">0</div>
+		<div id="d13" class="dicesmall">0</div>
+		<div id="d14" class="dicesmall">0</div>
+	</div>
+
+	<div class="column">
+		<div id="d21" class="dicesmall">0</div>
+		<div id="d22" class="dicesmall">0</div>
+		<div id="d23" class="dicesmall">0</div>
+		<div id="d24" class="dicesmall">0</div>
+	</div>
+	<div class="column">
+		<div id="d31" class="dicesmall">0</div>
+		<div id="d32" class="dicesmall">0</div>
+		<div id="d33" class="dicesmall">0</div>
+		<div id="d34" class="dicesmall">0</div>
+         </div>
+	 <div class="column">
+		<div id="d41" class="dicesmall">0</div>
+		<div id="d42" class="dicesmall">0</div>
+		<div id="d43" class="dicesmall">0</div>
+		<div id="d44" class="dicesmall">0</div>
+		</div><br>
+          <button onclick="rollDice()">Roll Dice</button>
+          <button onclick="startTimer()"> Start Time</button>
+          <button onclick="cancelTimer()"> Cancel</button>
+        <span id="timer"></span><br><br>
+       <label for="word">Check definition:</label>
+        <input type="text" id="word" name="word" size=8>
+        <button onclick="checkWord()">Check</button>
+	<p id="definition"> </p>
+  </div>
+  <div class="main">
+       <label for="fname">Name:</label>
+        <input type="text" id="fname" name="fname"><br><br>       
+        <span style="align: center">Word List</span><br>
+        <textarea id="wordlist" cols="25" rows="30"></textarea>
+  </div>
+</div>
+<script>
+//Declare a few global variables
+
+var diceall=["PEHNSI", "SUTELP", "LYBTIA","CAPEMD",
+"LUKEDY","WESODN","KOTUDN","BOJAMQ",
+"NVDZAE","IYEEHF","FXRBOI","EGINVT",
+"RIGULW","MORASH","TACIAO","SACERL"]; 
+var diceSide=new Array(16);
+var boggleTimer;
+maxtime=120;
+var width;
+
+function rollDice() {
+// first randomize the side of each dice that will be face up 
+  var i;
+  for (i = 0; i < 16; i++) {
+	sideNum=Math.floor(Math.random()*6);
+	diceSide[i]=diceall[i].charAt(sideNum);
+        }
+
+  // now shuffle the dice array to represent shaking the dice
+  var currentIndex=16;
+  var tempValue;
+  var randomIndex;
+  while (0 != currentIndex) {
+   randomIndex = Math.floor(Math.random() * currentIndex);
+   currentIndex -= 1;
+// And swap it with the current element.
+    tempValue = diceSide[currentIndex];
+    diceSide[currentIndex] = diceSide[randomIndex];
+    diceSide[randomIndex] = tempValue;
+  }
+//  google.script.run.saveDice(diceSide);
+  document.getElementById("timer").innerHTML="Ready!";
+}
+
+
+    function showData(data){
+
+//  this section is only needed in google scripts.  Otherwise remove.
+      var diceSide=new Array; 
+      var html = "";
+      for (var i=0; i<data.length; i++) {
+           html += "," + data[i];
+         }
+      diceSide=html.split(",");
+
+//  data retrieved from Google sheet
+     var i,j;
+     for (i=1; i <= 4; i++){
+       for (j=1; j<= 4; j++) {
+         loca = "d"+i+j;
+         pos=i*4+j;
+         diceLetter=diceSide[(i-1)*4+j];  // uncomment this line in google scripts
+//         diceLetter=diceSide[(i-1)*4+j-1];  // otherwise use this line
+        if (diceLetter=="Q") {diceLetter="Qu"}
+        document.getElementById(loca).innerHTML = diceLetter;
+       }
+     }
+    }
+
+function startTimer() {
+ // first display the Boggle board on the screen
+      google.script.run.withSuccessHandler(showData).getData();// uncomment this line in google scripts
+ //     showData();  // otherwise use this line
+      var i;
+     document.getElementById("wordlist").innerHTML="";
+//  var elem = document.getElementById("myBar");   
+  width = 0;
+  boggleTimer = setInterval(frame,maxtime*10);
+//  document.getElementById("timer").innerHTML = width;
+}
+
+  function frame() {
+    if (width == 100) {
+      document.getElementById("timer").innerHTML = "Time's up!";
+      document.getElementById("timer").style.color = "red";
+      clearInterval(id);
+    } else {
+      var secondsLeft=maxtime*(1-width/100)
+      document.getElementById("timer").innerHTML =
+           'Time left='+fmtMSS(secondsLeft)+' min.';
+       document.getElementById("timer").style.color = "black";
+      width++; 
+//      elem.style.width = width + '%'; 
+    }
+  }
+
+
+function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+Math.floor(s)}
+
+function checkWord() {
+
+//var dictionary="https://dictionaryapi.com/api/v3/references/sd4/json/baseball?key=02e87d69-a2bc-451d-a1b4-f528d18c5e92";
+var dicapipt1="https://dictionaryapi.com/api/v3/references/sd4/json/";
+var dicapipt2="?key=****put your Meriam-Webster Dictionary Key Here***";
+
+  var word=document.getElementById("word").value;
+  var dictionary=dicapipt1+word+dicapipt2;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      response=JSON.parse(this.responseText);
+      if (response.length<1) {
+        document.getElementById("definition").innerHTML = "That word is not in the dictionary";
+        }
+      else {
+        document.getElementById("definition").innerHTML = response[0].shortdef;
+       }
+    }
+  };
+  xhttp.open("GET", dictionary, true);
+  xhttp.send();
+}
+
+function cancelTimer() {
+   clearInterval(boggleTimer);
+  document.getElementById("timer").innerHTML = "canceled";
+}
+
+</script>
+</body>
+</html>
