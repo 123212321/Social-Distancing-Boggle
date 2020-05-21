@@ -175,7 +175,7 @@ function rollDice() {
     diceSide[currentIndex] = diceSide[randomIndex];
     diceSide[randomIndex] = tempValue;
   }
-//  google.script.run.saveDice(diceSide);
+  google.script.run.saveDice(diceSide);  // uncomment in google script
   document.getElementById("timer").innerHTML="Ready!";
 }
 
