@@ -25,8 +25,7 @@ Things I learned from this project:
 2.  My first attempt at using an API.  I use a very basic, simple call to a dictionary API.
 3.  Using CSS to format my webpage.
 
-If I want to work on this project some more, I can add a program that compares player's word lists.  However, I don't want to take away the part of the game that involves discussing word list.  
-
+If I want to work on this project some more, I'll add a program that compares player's word lists and/or gives a list of unique words and possibly the number of players who found each one.  However, I don't want to completely remove the social aspect of the game.
 Previous Boggle version:
 The following explains BoggleCode.js and shareWordList.js
 
