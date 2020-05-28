@@ -7,7 +7,7 @@ This project is the most complicated web program I have written, so I have learn
 
 I now have figured out how to make this Boggle Game into a web page.  It still has to depend on a google sheet because I need a central place to store the Boggle board that is accessible by all the players.  This code was written using Google Apps Script and includes two files: index.html and Code.gs, both part of a single Google Apps Script project.  Code.gs runs on the server and communicates between the browser and the Google sheet (which is on the Google server). and index.html runs in the user's browser.  This version is much easier for the user, does not require a Google account for the user and is much easier to set up.
 
-Update 5/27:  I added code to display any typed word listson the Boggle spreadsheet. The lists are sorted (in Javascript because I could not call the Sheets sort function), and the next step (if I want to) is to compare word lists and declare a winner.  
+Update 5/27:  I added code to display words in the Word List area on the Boggle spreadsheet. The lists are sorted (in Javascript because calling the Sheets sort function from Code.gs did not work), and the next step (if I want to) is to compare word lists and declare a winner.  Removing word lists from previous games would have to be done manually
 
 Here are the steps to using the program:
 1.  Open a new Google Apps Script project
