@@ -31,3 +31,55 @@ function saveDice(diceSide) {
   range.setBackground("");
   range.setValue("Ready!");
 }
+
+function addToSheet(playerName,wordList) {
+  var sheet = SpreadsheetApp.openById("17XzrbgarItm0WFD3JRJ4FnNJa57xv65aBpvUsbg-QOs").getSheets()[0];
+  sheet.insertColumns(6,1);  //shift previously loaded word lists to the right and add new one
+  var range=sheet.getRange("F1");
+  range.setValue(playerName);// put plauer's name at the top of the list
+//words are separated by line feed, unicode character 10
+  var separator=String.fromCharCode(10);
+
+  wordArray=wordList.split(separator);
+  wordArray.sort();
+
+//put list in Boggle spreadsheet
+  var i;
+  var cell;
+  for (i=2; i<=wordArray.length+1; i++) {
+    cell="F"+i;
+    range=sheet.getRange(cell);
+    Logger.log(cell);
+    range.setValue(wordArray[i-2]);
+  } 
+//  cells="F2:F"+(wordArray.length+1).toString();
+//  range=sheet.getRange(cells);
+//  range.sort(1);
+
+}
+
+function addToSheet(playerName,wordList) {
+  var sheet = SpreadsheetApp.openById("17XzrbgarItm0WFD3JRJ4FnNJa57xv65aBpvUsbg-QOs").getSheets()[0];
+  sheet.insertColumns(6,1);  //shift previously loaded word lists to the right and add new one
+  var range=sheet.getRange("F1");
+  range.setValue(playerName);// put plauer's name at the top of the list
+//words are separated by line feed, unicode character 10
+  var separator=String.fromCharCode(10);
+
+  wordArray=wordList.split(separator);
+  wordArray.sort();  //sort in Javascript
+
+//put list in Boggle spreadsheet
+  var i;
+  var cell;
+  for (i=2; i<=wordArray.length+1; i++) {
+    cell="F"+i;
+    range=sheet.getRange(cell);
+    Logger.log(cell);
+    range.setValue(wordArray[i-2]);
+  } 
+//  cells="F2:F"+(wordArray.length+1).toString();
+//  range=sheet.getRange(cells);
+//  range.sort(1);
+}
+
