@@ -5,7 +5,9 @@ Now we can play Boggle even while social distancing.
 
 This project is the most complicated web program I have written, so I have learned how to significantly improve my first attempt which was a google sheet and difficult to use if you are not logged into a Google account.
 
-I now have figured out how to make this Boggle Game into a web page.  It still has to depend on a google sheet because I need a central place to store the Boggle board that is accessible by all the players.  This code was written using Google Apps Script and includes two files: index.html and Code.gs, both part of a single Google Apps Script project.  Code.gs runs on the server and communicates between the browser and the Google sheet (which is on the Google server). and index.html runs in the user's browser.  This version is much easier for the user, does not require a Gppgle account for the user and is much easier to set up.
+I now have figured out how to make this Boggle Game into a web page.  It still has to depend on a google sheet because I need a central place to store the Boggle board that is accessible by all the players.  This code was written using Google Apps Script and includes two files: index.html and Code.gs, both part of a single Google Apps Script project.  Code.gs runs on the server and communicates between the browser and the Google sheet (which is on the Google server). and index.html runs in the user's browser.  This version is much easier for the user, does not require a Google account for the user and is much easier to set up.
+
+Update 5/27:  I added code to display any typed word listson the Boggle spreadsheet. The lists are sorted (in Javascript because I could not call the Sheets sort function), and the next step (if I want to) is to compare word lists and declare a winner.  
 
 Here are the steps to using the program:
 1.  Open a new Google Apps Script project
