@@ -36,7 +36,9 @@ body {
     border-radius: 5px;
 }
 
-
+button:hover {
+  background-color: #(9CFFFF);
+  }
 /* Header/logo Title */
 .header {
   padding: 10px;
@@ -47,7 +49,7 @@ body {
 
 button {
   background:#FFFFCC;
-  font-size:16px
+  font-size:14px
 }
 
 /* Column container */
@@ -138,8 +140,10 @@ Merrian-Webster School Dictionary (for ages 14+).
   </div>
   <div class="main">
        <label for="fname">Name:</label>
-        <input type="text" id="fname" name="fname"><br><br>       
-        <span style="align: center">Word List</span><br>
+        <input type="text" id="fname" name="fname" size=10>
+        <br><br>       
+        <span style="align: center">Word List&nbsp&nbsp&nbsp</span>
+       <button onclick="submitList()"> Submit List</button><br>
         <textarea id="wordlist" cols="25" rows="30"></textarea>
   </div>
 </div>
@@ -175,7 +179,7 @@ function rollDice() {
     diceSide[currentIndex] = diceSide[randomIndex];
     diceSide[randomIndex] = tempValue;
   }
-  google.script.run.saveDice(diceSide);  // uncomment in google script
+  google.script.run.saveDice(diceSide);  //uncomment this line in google scripts
   document.getElementById("timer").innerHTML="Ready!";
 }
 
@@ -209,7 +213,7 @@ function startTimer() {
       google.script.run.withSuccessHandler(showData).getData();// uncomment this line in google scripts
  //     showData();  // otherwise use this line
       var i;
-     document.getElementById("wordlist").innerHTML="";
+     document.getElementById("wordlist").innerHTML="    ";
 //  var elem = document.getElementById("myBar");   
   width = 0;
   boggleTimer = setInterval(frame,maxtime*10);
@@ -220,7 +224,8 @@ function startTimer() {
     if (width == 100) {
       document.getElementById("timer").innerHTML = "Time's up!";
       document.getElementById("timer").style.color = "red";
-      clearInterval(id);
+      clearInterval(boggleTimer);
+      return;
     } else {
       var secondsLeft=maxtime*(1-width/100)
       document.getElementById("timer").innerHTML =
@@ -238,7 +243,7 @@ function checkWord() {
 
 //var dictionary="https://dictionaryapi.com/api/v3/references/sd4/json/baseball?key=02e87d69-a2bc-451d-a1b4-f528d18c5e92";
 var dicapipt1="https://dictionaryapi.com/api/v3/references/sd4/json/";
-var dicapipt2="?key=****put your Meriam-Webster Dictionary Key Here***";
+var dicapipt2="?key=02e87d69-a2bc-451d-a1b4-f528d18c5e92";
 
   var word=document.getElementById("word").value;
   var dictionary=dicapipt1+word+dicapipt2;
@@ -262,6 +267,13 @@ function cancelTimer() {
    clearInterval(boggleTimer);
   document.getElementById("timer").innerHTML = "canceled";
 }
+
+function submitList()  {
+  var wordList=document.getElementById("wordlist").value;
+  var playerName=document.getElementById("fname").value;
+//  document.getElementById("demo").innerHTML=wordList;
+  google.script.run.addToSheet(playerName,wordList);
+  }
 
 </script>
 </body>
