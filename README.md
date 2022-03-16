@@ -11,7 +11,7 @@ Here are the steps to using the program:
 1.  Open a new Google Apps Script project
 2.  Paste the Code.gs file in this repository into the project
 3.  Open a new HTML file and past the code in index.html in this repository into the file
-3.  Create a bew Google Sheet.  Any empty Google Sheet is fine.  You just need a central place to store the game board that all players can access.
+3.  Create a new Google Sheet.  Any empty Google Sheet is fine.  You just need a central place to store the game board that all players can access.
 4.  Paste the id from the Google Sheet into the Code.gs in two places
 Here is how to find the id of your Google Sheet if you do not know:
 https://developers.google.com/sheets/api/guides/concepts
@@ -26,7 +26,8 @@ Things I learned from this project:
 3.  Using CSS to format my webpage.
 
 If I want to work on this project some more, I'll add a program that compares player's word lists and/or gives a list of unique words and possibly the number of players who found each one.  However, I don't want to completely remove the social aspect of the game.
-Previous Boggle version:
+
+Previous Boggle version (Most of the information below is not needed anymore for the current version of the code):
 The following explains BoggleCode.js and shareWordList.js
 
 I created this game mostly in Google Sheets amd wrote Javascript routines to mix up the dice and time the game.  This repository contains the javascript, and here I explain how to recreate the Game Board using Google Sheets.  I do not know how to share the the soreadsheet here.  Using Google Sheets is the key to this game because if you share the URL of the spreadsheet, everyone will see the same game.
